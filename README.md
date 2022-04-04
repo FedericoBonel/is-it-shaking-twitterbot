@@ -7,7 +7,7 @@ Is it shaking is a Twitter bot that scans all the earthquake data gathered by th
 You only need to:
 - Create a Twitter developer account for the bot
 - Request "Elevated access"
-- Add your own tokens and keys (from your twitter account) into a "twitter.properties" file in resources 
+- Add your own tokens and keys (from your twitter account) into a "twitter.properties" file in src/main/resources
 - Magic!✨
 
 ## Requirements
