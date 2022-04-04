@@ -40,6 +40,12 @@ public class USGSConnection {
         return null;
     }
 
+
+    /**
+     * Extracts earthquake objects from json response
+     * @param jsonResponse String of a json response
+     * @return A list of earthquakes contained in that json response
+     */
     private List<Earthquake> extractEarthquakes(String jsonResponse) {
         JSONObject response = new JSONObject(jsonResponse);
         JSONArray earthquakes = response.getJSONArray("features");
@@ -55,7 +61,7 @@ public class USGSConnection {
             // Url
             String url = properties.getString("url");
             // Magnitude
-            long magnitude = properties.getLong("mag");
+            Float magnitude = Float.parseFloat(properties.getString("mag"));
             // Time
             Date time = new Date(Long.parseLong(properties.getString("time")));
             result.add(new Earthquake(id, location, url, magnitude, time));
@@ -63,7 +69,12 @@ public class USGSConnection {
         return result;
     }
 
-    public URL createUrl(String url) {
+    /**
+     * Creates a url
+     * @param url String of the url
+     * @return a URL object corresponding to that string
+     */
+    private URL createUrl(String url) {
         URL finalURL;
         try {
             finalURL = new URL(url);
@@ -74,7 +85,13 @@ public class USGSConnection {
         }
     }
 
-    private static String makeGETHttpRequest(URL url) throws IOException {
+    /**
+     * Executes a get http request to the url that's being passed
+     * @param url object representing the url where we want to send the request to
+     * @return A string representing the json response
+     * @throws IOException if an I/O error ocurrs
+     */
+    private String makeGETHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
         if (url == null) return jsonResponse;
 
@@ -87,7 +104,7 @@ public class USGSConnection {
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
             // If the request was successful (response code 200),
-            // then read the input stream and parse the response.
+            // parse the response.
             if (urlConnection.getResponseCode() == 200) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
@@ -107,7 +124,12 @@ public class USGSConnection {
         return jsonResponse;
     }
 
-    private static String readFromStream(InputStream inputStream) throws IOException {
+    /**
+     * Parses an input stream from an HTTP response into a json response
+     * @return json response from that HTTP request
+     * @throws IOException if an I/O error ocurrs
+     */
+    private String readFromStream(InputStream inputStream) throws IOException {
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream, Charset.forName("UTF-8"));
