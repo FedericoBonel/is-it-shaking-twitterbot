@@ -10,6 +10,8 @@ You only need to:
 - Add your own tokens and keys (from your twitter account) into a "twitter.properties" file in src/main/resources
 - Magic!✨
 
+![Magic](https://media2.giphy.com/media/l0MYw6Cu1TfY3gsWk/giphy.gif?cid=ecf05e47bce227pode458mrcsv44u9akgtap7bsvxd6h2lqw&rid=giphy.gif&ct=g)
+
 ## Requirements
 
 If you want to run your own earthquake detector you only need the following:
