@@ -8,6 +8,7 @@ You only need to:
 - Create a Twitter developer account for the bot
 - Request "Elevated access"
 - Add your own tokens and keys (from your Twitter account) to a "twitter.properties" file in src/main/resources
+- Compile and run it
 - Magic!✨
 
 ![Magic](https://media2.giphy.com/media/l0MYw6Cu1TfY3gsWk/giphy.gif?cid=ecf05e47bce227pode458mrcsv44u9akgtap7bsvxd6h2lqw&rid=giphy.gif&ct=g)
